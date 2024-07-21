@@ -215,7 +215,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hnx5j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.76647, 0, -4.74265)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Client/Map/Box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7172, 0.25, 0)
 mesh = SubResource("BoxMesh_eh36u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Client/Map/Box"]
