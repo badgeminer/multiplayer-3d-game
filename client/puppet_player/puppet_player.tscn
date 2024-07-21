@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://6kxnt54jucpr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d1l2p"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ubki7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02k5u"]
+vertex_color_is_srgb = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ruhwa"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="PuppetPlayer" type="CharacterBody3D"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_d1l2p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ubki7")
+surface_material_override/0 = SubResource("StandardMaterial3D_02k5u")
+
+[node name="ServerSync" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ruhwa")
