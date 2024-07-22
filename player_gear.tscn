@@ -9,5 +9,5 @@ material = SubResource("StandardMaterial3D_nfud8")
 [node name="Node3D" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.569002, 0, 0, 0, 0.314009, 0, 0, 0, 0.666639, 0, 1, 0.293645)
+transform = Transform3D(0.569002, 0, 0, 0, 0.314009, 0, 0, 0, 0.666639, -0.36157, 0.625344, 0)
 mesh = SubResource("CapsuleMesh_44jok")
