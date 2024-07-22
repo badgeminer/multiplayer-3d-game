@@ -81,3 +81,5 @@ process_material = SubResource("ParticleProcessMaterial_tyipt")
 draw_pass_1 = SubResource("SphereMesh_qeys8")
 
 [node name="Gas" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
