@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cavpk4ugrk4tu"]
+[gd_scene load_steps=13 format=3 uid="uid://cavpk4ugrk4tu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kihbl"]
 albedo_color = Color(0, 0.577795, 5.77569e-07, 1)
@@ -14,12 +14,38 @@ height = 0.7
 radius = 0.21
 height = 0.71
 
+[sub_resource type="Gradient" id="Gradient_bit4e"]
+colors = PackedColorArray(0.940661, 0.517792, 0, 1, 1, 0, 0, 0.113725)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7bh5r"]
+gradient = SubResource("Gradient_bit4e")
+
+[sub_resource type="Curve" id="Curve_8fxyy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_77cee"]
+curve = SubResource("Curve_8fxyy")
+
+[sub_resource type="Curve" id="Curve_l75xq"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 2.01099), -1.93007, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qo2nv"]
+curve = SubResource("Curve_l75xq")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tyipt"]
 direction = Vector3(0, 1, 0)
 spread = 180.0
 initial_velocity_min = 2.0
 initial_velocity_max = 4.0
 gravity = Vector3(0, -2.45, 0)
+radial_accel_max = 5.0
+scale_curve = SubResource("CurveTexture_77cee")
+scale_over_velocity_curve = SubResource("CurveTexture_qo2nv")
+color = Color(0.823357, 0.420041, 0, 1)
+color_ramp = SubResource("GradientTexture1D_7bh5r")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ws7f"]
 albedo_color = Color(0.694568, 0.183704, 0, 1)
@@ -45,10 +71,13 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_iec2m")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="Explosion" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0779545, 0.996957, 0, -0.996957, 0.0779545, 0, 0.450106, 0)
-amount = 15
+amount = 50
 lifetime = 0.41
-trail_lifetime = 3.42
+explosiveness = 1.0
+trail_lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_tyipt")
 draw_pass_1 = SubResource("SphereMesh_qeys8")
+
+[node name="Gas" type="GPUParticles3D" parent="."]
